@@ -141,3 +141,21 @@ Check output in the goodies_outputs.txt
 tests/main_tests.dart
 
 ```
+
+## Demo
+
+Link to demo screen recording for Problem Statement 1
+
+
+```bash
+https://asset.cloudinary.com/dbcvwkblh/51f082604f5ca4f7bb6012b62c57a422
+
+```
+
+Link to demo screen recording for Problem Statement 2
+
+
+```bash
+https://asset.cloudinary.com/dbcvwkblh/23ec40c9da1c4342ccb92298782edd52
+
+```
