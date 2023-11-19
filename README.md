@@ -120,13 +120,21 @@ Note: Hit Enter key on command line after each input.
 6. Commands to Run for problem statement 2 :
 
 ```bash
-Note: inputs are to be added to the goodies_inputs.txt file and the output can be found in the goodies_output.txt file.
+Add inputs in the goodies_inputs.txt
+
+```
+```bash
+Run Command
 
 dart main.dart goodies
 
 ```
+```bash
+Check output in the goodies_outputs.txt
 
-6. Tests are also included in the test folder :
+```
+
+7. Tests are also included in the test folder :
 
 ```bash
 
