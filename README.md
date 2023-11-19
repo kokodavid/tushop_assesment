@@ -100,7 +100,7 @@ Make sure you have the following installed:
 
 ```
 
-4. Change into lib directory and run:
+4. Change into lib directory:
 
 ```bash
 cd lib
