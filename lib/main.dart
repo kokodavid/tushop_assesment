@@ -3,8 +3,29 @@ import 'dart:io';
 import 'goodies/goodies_file.dart';
 import 'jobs/job_file.dart';
 
-void main() {
-  goodies();
+void main(List<String> arguments) {
+
+  if (arguments.isEmpty) {
+    print("Usage: dart main.dart <command>");
+    print("Available commands: jobs, goodies");
+    return;
+  }
+
+    String command = arguments[0];
+
+  switch (command) {
+    case "jobs":
+      jobs();
+      break;
+    case "goodies":
+      goodies();
+      break;
+    default:
+      print("Invalid command. Available commands: jobs, goodies");
+      break;
+  }
+
+
 }
 
 jobs() {
@@ -26,7 +47,6 @@ jobs() {
   List<int> result = maximizeEarnings(jobs);
 
   // Output the result
-
   print("\nThe number of tasks and earnings available for others");
   print("Task: ${result[0]}");
   print("Earnings: ${result[1]}");
@@ -39,21 +59,28 @@ goodies() {
   int numEmployees = int.parse(input[0].split(":")[1].trim());
 
   List<MapEntry<String, int>> goodies = [];
+
+  // Parse each line to extract the name and price of each goodie
   for (var line in input.sublist(3, input.length - 1)) {
     var parts = line.split(": ");
     goodies.add(MapEntry(parts[0], int.parse(parts[1])));
   }
 
   // Find selected goodies and minimum price difference
-  List<MapEntry<String, int>> selectedGoodies = findMinPriceDifference(goodies, numEmployees);
+  List<MapEntry<String, int>> selectedGoodies =
+      findMinPriceDifference(goodies, numEmployees);
 
-  // Write output to the file
-    var output = File("goodies/goodies_output.txt").openWrite();
-    output.writeln("The goodies selected for distribution are:");
-      for (var goodie in selectedGoodies) {
+  // Write output to the goodies output file
+  var output = File("goodies/goodies_output.txt").openWrite();
+  output.writeln("The goodies selected for distribution are:");
+
+  // Write each selected goodie to the output file
+  for (var goodie in selectedGoodies) {
     output.writeln("${goodie.key}: ${goodie.value}");
   }
-  output.writeln("And the difference between the chosen goodie with highest price and the lowest price is ${selectedGoodies.last.value - selectedGoodies.first.value}");
-  output.close();
 
+  // Write the minimum price difference to the output file
+  output.writeln(
+      "And the difference between the chosen goodie with highest price and the lowest price is ${selectedGoodies.last.value - selectedGoodies.first.value}");
+  output.close();
 }
